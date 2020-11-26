@@ -1,0 +1,28 @@
+@import "./general";
+
+.tipBar {
+  padding: 10px;
+
+  &__icon {
+    display: inline-block;
+    
+    i {
+      font-size: 25px;
+      color: $color-1-500;
+    }
+  }
+
+  &__texts {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0 0 5px;
+
+    p {
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1;
+
+    }
+  }
+}
