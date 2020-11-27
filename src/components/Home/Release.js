@@ -15,7 +15,7 @@ const Release = ({ destaque }) => {
                             {createElement('a', { href: "/destaque/lancamento", className: "link-texto text-decoration-none mr-md-3" }, "ver todo")}
                         </div>
 
-                        <div className="cards cards-produto cards-produto-width-1">
+                        <div className="cards cards-produto cards-produto-width-4">
                         {destaque.map(product =>
                             <ProductCard
                                 key={`release-card-${product.idProduto}`}

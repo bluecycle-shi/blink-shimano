@@ -1,12 +1,10 @@
 import React, { useState, createElement } from 'react';
 // import { Link } from 'react-router-dom';
-// import { formatMoney, disconnect } from '../../utils';
-import { formatMoney } from '../../utils';
+import { formatMoney, disconnect } from '../../utils';
 import { addToCart, fetchCartItems, updateCart } from '../../services/cart-api';
 import * as CartActions from '../../store/actions/cart'
 import { connect } from 'react-redux';
 import { setItemSession, getItemSession } from '../../utils';
-
 const Swal = require('sweetalert2');
 
 
@@ -31,7 +29,7 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
         const intQuantity = parseInt(quantity);
 
         if (isNaN(intQuantity) || intQuantity < 1) {
-            alert("Ingrese una cantidad válida para el producto");
+            alert("Insira uma quantidade válida para o produto!");
             return false;
         }
 
@@ -67,24 +65,24 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
 								buttonActionEnabled(e);
 								setAdding(false);
                             })
-                            // .catch(reject => {
-                            //     disconnect();
-							// 	buttonActionEnabled(e);
-							// 	setAdding(false);
-                            // })
+                            .catch(reject => {
+                                disconnect();
+								buttonActionEnabled(e);
+								setAdding(false);
+                            })
                     }
                    
                 })
-                // .catch(reject => {
-                //     disconnect();
-				// 	buttonActionEnabled(e);
-                // })
+                .catch(reject => {
+                    disconnect();
+					buttonActionEnabled(e);
+                })
         } else {
             addToCart(product.idProduto, intQuantity, origin)
                 .then(resultAdd => {
                     if (resultAdd.data.Codigo === 500) {
-                        if (resultAdd.data.CodigoInterno === 4) {
-                            // disconnect()
+                        if (resultAdd.data.CodigoInterno == 4) {
+                            disconnect()
                         } else {
                             alert(resultAdd.data.Status);
 							setAdding(false);
@@ -104,14 +102,14 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
 								setAdding(false);
 							})
                             .catch(reject => {
-                                // disconnect();
+                                disconnect();
 								buttonActionEnabled(e);
 								setAdding(false);
                             })
                     }
                 })
                 .catch(reject => {
-                    // disconnect();
+                    disconnect();
 					buttonActionEnabled(e);
                 })
         }
@@ -153,8 +151,7 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
                             <p className="card-item--valor-total"><b>Total R$ {formatMoney(product.Preco, 2, ',', '.')}</b></p>
                         </>
                 }
-                {/* <p className="card-item--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="no-stock">Producto no disponible</span>}</p> */}
-                <p className="card-item--estoque">{product.Estoque > 0 ? `` : <span className="no-stock">Producto no disponible</span>}</p>
+                {/* <p className="card-item--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="badge badge-black-white">Producto no disponible</span>}</p> */}
             </div>
             {product.Estoque > 0 &&
                 <div className="card-item--footer">

@@ -18,7 +18,7 @@ const DropdownUser = () => {
     return (
         <div className="dropdown dropdown_user">
             <button className="btn btn--icon dropdown-toggle" type="button" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span className="dropdown_user_img"><span className="fas fa-user"></span></span>
+            <span className="dropdown_user_img"><span className="fas fa-user"></span></span>
                 <span className="dropdown_user_msg">
                     <b>{nome}</b>
                     <small>CNPJ {cnpj}</small>
@@ -29,7 +29,7 @@ const DropdownUser = () => {
                 <div className="dropdown-menu_cont">
                     <ul className="list-unstyled mb-0">
                         <li>
-                            {/* <Link to="/minha-conta" className="dropdown-menu_link">Mi cuenta</Link> */}
+                            {/* <Link to="/minha-conta" className="dropdown-menu_link">Minha conta</Link> */}
                             {createElement('a', { href: '/minha-conta', className: 'dropdown-menu_link' }, "Mi cuenta")}
                         </li>
                         <li>

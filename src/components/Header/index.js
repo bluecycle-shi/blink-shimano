@@ -6,7 +6,6 @@ import DropdownCart from './DropdownCart/DropdownCart';
 import NavBar from '../NavBar';
 import HeaderResponsive from '../HeaderResponsive';
 import NavBarResponsive from '../NavBarResponsive';
-import { getItemSession } from '../../utils';
 import '../../scss/common.scss';
 
 export default function Header() {
@@ -19,31 +18,15 @@ export default function Header() {
               <Logo />
             </div>
 
-            <div className="col-6">
+            <div className="col-5">
               <Search />
             </div>
-
-            {getItemSession('_token') && [
-              <>
-              <div className="col-2">
+            <div className="col-3">
                 <DropdownUser />
               </div>
               <div className="col-2">
                 <DropdownCart />
               </div>
-              </>,
-            ]}
-
-            {!getItemSession('_token') && [
-              <>
-                <div className="col-2">
-                    <a href="/login" className="header__link">
-                        Login
-                    </a>
-                </div>
-              </>,
-            ]}
-
           </div>
         </div>
         <HeaderResponsive />

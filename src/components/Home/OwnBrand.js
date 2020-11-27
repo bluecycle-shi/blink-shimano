@@ -15,7 +15,7 @@ const OwnBrand = ({ destaque }) => {
                                 {createElement('a', { href: "/destaque/marcapropria", className: "link-texto text-decoration-none mr-md-3" }, "ver todo")}
                             </div>
 
-                            <div className="cards cards-produto cards-produto-width-1">
+                            <div className="cards cards-produto cards-produto-width-4">
                                 {destaque.map(product =>
                                     <ProductCard
                                         key={`own-brand-card-${product.idProduto}`}

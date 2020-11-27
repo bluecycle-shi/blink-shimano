@@ -14,7 +14,7 @@ const CartResponsive = ({ items, amount }) => {
                                 <li key={`cart-dropdown-resp-item-${index}`} className="cart_list_item">
                                     {createElement('a', { href: `/produto/${item.idProduto}`, className: 'dropdown-menu_link' }, item.Descricao)}
                                     <div className="cart_list_item_footer">
-                                        <p>Quantidade: {item.Quantidade}</p>
+                                        <p>Cantidad: {item.Quantidade}</p>
                                         <p>R$ {formatMoney(item.ValorTotalFinal, 2, ',', '.')}</p>
                                     </div>
                                 </li>

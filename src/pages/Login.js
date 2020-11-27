@@ -7,147 +7,136 @@ import { fetchCartItems } from '../services/cart-api';
 import { setItemSession, getItemSession } from '../utils';
 import '../scss/login.scss';
 
+
 import {
-  deviceType,
-  browserName,
-  browserVersion,
-  osName,
-  osVersion,
-} from 'react-device-detect';
+deviceType,
+browserName,
+browserVersion,
+osName,
+osVersion
+} from "react-device-detect";
 import { v4 as uuidv4 } from 'uuid';
 import Cookies from 'js-cookie';
 import { fetchProductsByTagHome } from '../services/products-api';
 
 const Login = (props) => {
-  const [state, setState] = useState({
-    usuario: '',
-    senha: '',
-  });
+const [state, setState] = useState({
+usuario: "",
+senha: ""
+})
 
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
 
-  const latestProps = useRef(props);
+const latestProps = useRef(props);
 
-  useEffect(() => {
-    // localStorage.clear();
+useEffect(() => {
+// localStorage.clear();
 
-    latestProps.current = props;
-  }, []);
+latestProps.current = props;
+}, []);
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setState((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
+const handleChange = (e) => {
+const { id, value } = e.target
+setState(prevState => ({
+...prevState,
+[id]: value
+}))
+}
 
-  const handleSubmitClick = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const usuario = state.usuario;
-    const senha = state.senha;
+const handleSubmitClick = (e) => {
+e.preventDefault();
+setLoading(true);
+const usuario = state.usuario;
+const senha = state.senha;
 
-    const doLogin = (idDevice) => {
-      fetchLogin(usuario, senha, idDevice)
-        .then((result) => {
-          if (result.data.Codigo === 200) {
-            const resultData = result.data.Data.Retorno;
-            const client = {
-              idCliente: resultData.idCliente,
-              idUsuario: resultData.idUsuario,
-              Login: resultData.Login,
-              Nome: resultData.Nome,
-              Email: resultData.Email,
-              ukPedido: resultData.ukPedido,
-              DataEmissao: resultData.DataEmissao,
-              NumeroItens: resultData.NumeroItens,
-              PedidoAlterado: resultData.PedidoAlterado,
-              LinkExpiracaoSessao: resultData.LinkExpiracaoSessao,
-            };
+const doLogin = (idDevice) => {
+fetchLogin(usuario, senha, idDevice)
+.then(result => {
+if (result.data.Codigo === 200) {
+const resultData = result.data.Data.Retorno;
+const client = {
+idCliente: resultData.idCliente,
+idUsuario: resultData.idUsuario,
+Login: resultData.Login,
+Nome: resultData.Nome,
+Email: resultData.Email,
+ukPedido: resultData.ukPedido,
+DataEmissao: resultData.DataEmissao,
+NumeroItens: resultData.NumeroItens,
+PedidoAlterado: resultData.PedidoAlterado,
+LinkExpiracaoSessao: resultData.LinkExpiracaoSessao
+}
 
-            setItemSession('_dados', JSON.stringify(client));
-            setItemSession('_pedido', client.ukPedido);
-            setItemSession('_token', resultData.TokenResposta);
+setItemSession('_dados', JSON.stringify(client));
+setItemSession('_pedido', client.ukPedido);
+setItemSession('_token', resultData.TokenResposta);
 
-            Promise.all([
-              fetchManufacturers(resultData.TokenResposta),
-              fetchCategories(resultData.TokenResposta),
-              fetchVersion(resultData.TokenResposta),
-              fetchHomolog(resultData.TokenResposta),
-              fetchCartItems(resultData.TokenResposta),
-            ]).then((resultFetch) => {
-              setItemSession(
-                '_fornecedores',
-                JSON.stringify(resultFetch[0].data.Data.Dados),
-              );
-              setItemSession(
-                '_categorias',
-                JSON.stringify(resultFetch[1].data.Data.Dados),
-              );
-              setItemSession(
-                'blink_versao',
-                JSON.stringify(resultFetch[2].data.Data),
-              );
-              setItemSession(
-                'blink_homolog',
-                JSON.stringify(resultFetch[3].data.Data),
-              );
-              setItemSession(
-                '_carrinho',
-                JSON.stringify(resultFetch[4].data.Data),
-              );
+Promise.all([
+fetchManufacturers(resultData.TokenResposta),
+fetchCategories(resultData.TokenResposta),
+fetchVersion(resultData.TokenResposta),
+fetchHomolog(resultData.TokenResposta),
+fetchCartItems(resultData.TokenResposta)
+])
+.then(resultFetch => {
+setItemSession('_fornecedores', JSON.stringify(resultFetch[0].data.Data.Dados))
+setItemSession('_categorias', JSON.stringify(resultFetch[1].data.Data.Dados))
+setItemSession('blink_versao', JSON.stringify(resultFetch[2].data.Data))
+setItemSession('blink_homolog', JSON.stringify(resultFetch[3].data.Data))
+setItemSession('_carrinho', JSON.stringify(resultFetch[4].data.Data))
 
-              window.location.href = process.env.REACT_APP_BASE_URL;
-            });
-          } else {
-            latestProps.current.history.push('/unauthorized');
-          }
-        })
-        .catch((error) => {
-          latestProps.current.history.push('/unauthorized');
-        });
-    };
+window.location.href = process.env.REACT_APP_BASE_URL
+})
+} else {
+latestProps.current.history.push('/unauthorized');
+};
 
-    var ambiente = process.env.REACT_APP_API_EMPRESA;
-    var isHomolog = ambiente.toLowerCase().includes('Teste') ? true : false;
+})
+.catch(error => {
+latestProps.current.history.push('/unauthorized');
+})
+}
 
-    var myCookie = Cookies.get('_register_' + isHomolog);
-    let device = myCookie;
+var ambiente = process.env.REACT_APP_API_EMPRESA;
+var isHomolog = ambiente.toLowerCase().includes("Teste") ? true : false;
 
-    if (!myCookie || device == null || device === '' || device === 0) {
-      const browser = browserName + ' ' + browserVersion + ' ' + deviceType;
-      const so = osName + ' ' + osVersion;
-      const serialNumber = uuidv4();
-      const uniqueKey = uuidv4();
+var myCookie = Cookies.get('_register_' + isHomolog);
+let device = myCookie;
 
-      postDevice(browser, so, uniqueKey, serialNumber)
-        .then((result) => {
-          Cookies.remove('_register_' + isHomolog);
-          Cookies.set('_register_' + isHomolog, result.data.Data.Retorno, {
-            expires: 3650,
-          });
-          return result.data.Data.Retorno;
-        })
-        .then((result) => doLogin(result));
-    } else {
-      doLogin(device);
-    }
-  };
+if (!myCookie || device == null || device == '' || device == 0) {
+const browser = browserName + ' ' + browserVersion + ' ' + deviceType;
+const so = osName + ' ' + osVersion;
+const serialNumber = uuidv4();
+const uniqueKey = uuidv4();
 
-  // se está logado, direciona para Home
-  if (getItemSession('_token')) {
-    fetchSession().then((result) => {
-      if (result.CodigoInterno !== 4) {
-        window.location.href = process.env.REACT_APP_BASE_URL;
-      } else {
-        localStorage.clear();
-      }
-    });
-    return null;
-  }
+postDevice(browser, so, uniqueKey, serialNumber)
+.then(result => {
+Cookies.remove('_register_' + isHomolog);
+Cookies.set('_register_' + isHomolog, result.data.Data.Retorno, { expires: 3650 });
+return result.data.Data.Retorno;
+})
+.then(result => doLogin(result));
+} else {
+doLogin(device);
+}
+}
 
-  return (
+
+// se está logado, direciona para Home
+if (getItemSession('_token')) {
+fetchSession()
+.then(result => {
+if (result.CodigoInterno != 4) {
+window.location.href = process.env.REACT_APP_BASE_URL
+} else {
+localStorage.clear();
+}
+})
+return null;
+}
+
+
+return (
     <section className="conteudo_interno" id="painellogin">
       <div className="painellogin__box">
         <div className="painellogin__image">
@@ -231,7 +220,7 @@ const Login = (props) => {
         </div>
       </div>
     </section>
-  );
-};
+)
+}
 
 export default Login;
