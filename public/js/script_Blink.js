@@ -311,25 +311,6 @@ $(function () {
     //     })
     // }
 
-    if ($('.cards-produto').length > 0) {
-
-        var wrapper = $('.cards-produto').not('.slick-initialized');
-    
-            wrapper.has('h2').each(function () {
-                var $t = $(this);
-                $t.find('h2').insertBefore($t);
-            });
-    
-            wrapper.slick({
-            slidesToScroll: 3,
-            slidesToShow: 3,
-            infinite: true,
-            arrows: true,
-            dots: false
-            });
-        }
-
-
     $('.btn-menu').click(function () {
         $('.nav--mobile').addClass('active');
 

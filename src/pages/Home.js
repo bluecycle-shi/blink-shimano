@@ -74,7 +74,7 @@ const Home = ({ refreshCartFn }) => {
     }, [])
 
     useEffect(() => {
-        fetchProductsByTagHome('Promocao', 4)
+        fetchProductsByTagHome('VITRINE1', 6)
             .then(result => {
                 if (result.data.Data) {
                     setPromotions(result.data.Data.Dados)
@@ -84,7 +84,7 @@ const Home = ({ refreshCartFn }) => {
         // .catch(reject => {
         //     disconnect();
         // })
-        fetchProductsByTagHome('Lancamento', 4)
+        fetchProductsByTagHome('VITRINE2', 6)
             .then(result => {
                 if (result.data.Data) {
                     setReleases(result.data.Data.Dados)
@@ -94,7 +94,7 @@ const Home = ({ refreshCartFn }) => {
         // .catch(reject => {
         //     disconnect();
         // })
-        fetchProductsByTagHome('MarcaPropria', 4)
+        fetchProductsByTagHome('VITRINE3', 6)
             .then(result => {
                 if (result.data.Data) {
                     setOwnBrands(result.data.Data.Dados)
@@ -104,7 +104,7 @@ const Home = ({ refreshCartFn }) => {
         // .catch(reject => {
         //     disconnect();
         // })
-        fetchProductsByTagHome('Revista', 4)
+        fetchProductsByTagHome('VITRINE4', 6)
             .then(result => {
                 if (result.data.Data) {
                     setBestSellers(result.data.Data.Dados)

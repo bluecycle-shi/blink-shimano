@@ -14,7 +14,7 @@ const Cart = ({ items, amount }) => {
                                     {/* <a href="/" className="dropdown-menu_link">{item.Descricao}</a> */}
                                     {createElement('a', { href: `/produto/${item.idProduto}`, className: 'dropdown-menu_link' }, item.Descricao)}
                                     <div className="dropdown_cart_item_footer">
-                                        <p>Cantidad: {item.Quantidade}</p>
+                                        <p>Quantidade: {item.Quantidade}</p>
                                         <p>R$ {formatMoney(item.ValorTotalFinal, 2, ',', '.')}</p>
                                     </div>
                                 </li>
@@ -25,12 +25,12 @@ const Cart = ({ items, amount }) => {
                     <div className="dropdown-menu_footer">
                         <div className="total">
                             <p>
-                                Total parcial:
+                                Subtotal:
                                 <b>R$ {formatMoney(amount, 2, ',', '.')}</b>
                             </p>
                         </div>
-                        {/* <Link to="/carrinho" className="btn btn--laranja">Cerrar orden</Link> */}
-                        {createElement('a', { href: '/carrinho', className: 'btn btn--laranja' }, 'Cerrar orden')}
+                        {/* <Link to="/carrinho" className="btn btn--laranja">Fechar pedido</Link> */}
+                        {createElement('a', { href: '/carrinho', className: 'btn btn--laranja' }, 'Fechar pedido')}
                     </div>
                 </>
             }

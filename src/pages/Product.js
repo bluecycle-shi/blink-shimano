@@ -44,18 +44,23 @@ const Product = ({ match, origin, refreshCartFn }) => {
         fetchProductsById(idProduto)
             .then(result => {
                 setProduct(result.data.Data.Dados[0])
-            }).then(result => setLoading(false))
+            })
+            .then(result => setLoading(false))
             .catch(reject => {
                 disconnect();
             })
-    }, [idProduto])
+    }, [])
 
-    // useEffect(() => {
-    //     fetchProductsBySuggestion(4).then(result => {
-    //             setProdutosSuggestion(result.data.Data.Dados)})
-    //             .then(result => setLoadingSuggestion(false))
-    //             .catch(reject => {disconnect(); })
-    // }, [])
+    useEffect(() => {
+        fetchProductsBySuggestion(4)
+            .then(result => {
+                setProdutosSuggestion(result.data.Data.Dados)
+            })
+            .then(result => setLoadingSuggestion(false))
+            .catch(reject => {
+                disconnect();
+            })
+    }, [])
 
     const handleAddToCart = (e) => {
         e.preventDefault();
@@ -172,7 +177,7 @@ const Product = ({ match, origin, refreshCartFn }) => {
                                     <h4 className="titulo h4">{product.Descricao}</h4>
                                     <p className="produtos-detalhe--codigo">EAN: {product.EAN}</p>
                                     <p className="produtos-detalhe--codigo">Código: {product.CodigoProduto}</p>
-                                    {/* <div className="produtos-detalhe--info">
+                                    <div className="produtos-detalhe--info">
                                         <div className="misc">
                                             <p>Embalagem</p>
                                             <p>{product.Embalagem}</p>
@@ -181,22 +186,21 @@ const Product = ({ match, origin, refreshCartFn }) => {
                                             <p>Unidade(s)</p>
                                             <p>{product.UnidadesPorCaixa}</p>
                                         </div>
-                                    </div> */}
+                                    </div>
                                     {product.PossuiPrecoPromocional
                                         ?
                                         <>
-                                            <p className="produtos-detalhe--valor--de"><strike>R$ {formatMoney(product.PrecoUnitario, 2, ',', '.')}</strike> </p>
-                                            <p className="produtos-detalhe--valor--por">R$ {formatMoney(product.PrecoPromocionalUnitario, 2, ',', '.')} </p>
+                                            <p className="produtos-detalhe--valor--de"><strike>R$ {formatMoney(product.PrecoUnitario, 2, ',', '.')}</strike> <small>unidade</small></p>
+                                            <p className="produtos-detalhe--valor--por">R$ {formatMoney(product.PrecoPromocionalUnitario, 2, ',', '.')} <small>unidade</small></p>
                                             <p className="produtos-detalhe--valor-total"><b>Total: de <strike>R$ {formatMoney(product.Preco, 2, ',', '.')}</strike> por R$ {formatMoney(product.PrecoPromocional, 2, ',', '.')}</b></p>
                                         </>
                                         :
                                         <>
-                                            <p className="produtos-detalhe--valor">R$ {formatMoney(product.PrecoUnitario, 2, ',', '.')} </p>
+                                            <p className="produtos-detalhe--valor">R$ {formatMoney(product.PrecoUnitario, 2, ',', '.')} <small>unidade</small></p>
                                             <p className="produtos-detalhe--valor-total"><b>Total R$ {formatMoney(product.Preco, 2, ',', '.')}</b></p>
                                         </>
                                     }
-                                    {/* <div className="produtos-detalhe--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="badge badge-black-white">Producto no disponible</span>}</div> */}
-                                    <div className="produtos-detalhe--estoque">{product.Estoque > 0 ? `` : <span className="badge badge-black-white">Producto no disponible</span>}</div>
+                                    <div className="produtos-detalhe--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="badge badge-black-white">Produto indisponível</span>}</div>
                                     <hr />
                                     {product.Estoque > 0 &&
                                         <form className="form-adicionar">

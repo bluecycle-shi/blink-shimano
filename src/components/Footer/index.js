@@ -25,7 +25,7 @@ export default function Footer() {
                 </div>
                 <div className="copyright">
                     <div className="copyright--container">
-                        <p className="footer--texto">@{new Date().getFullYear()} Bluecycle - Todos os direitos reservados</p>
+                        <p className="footer--texto">@{new Date().getFullYear()} Blink Systems - Todos os direitos reservados</p>
                         <div className="copyright--desenv">
                             <p className="footer--texto arial-bold mb-lg-0">Desenvolvido por Blink Systems Acessoria e Informática Ltda</p>
                             <p className="footer--texto arial-bold mb-0">Blink WebSales / Versão: {process.env.REACT_APP_VERSION} / API {versionApi}</p>

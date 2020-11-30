@@ -21,7 +21,7 @@ const CategoryResponsive = () => {
                 <nav className="nav">
                     <ul className="list-unstyled mb-0">
                         {allCategories
-                            .filter(newarr => newarr.idClassificacaoNivelAnterior === 0)
+                            .filter(newarr => newarr.idClassificacaoNivelAnterior == 0)
                             .map(category => (
                                 <li key={category.idClassificacaoNivel} className="nav-item"><a href={`#${category.Codigo}`} className="nav-link nav-dropdown">{category.Descricao}<span className="fa fa-chevron-right"></span></a></li>
                             ))}
@@ -30,7 +30,7 @@ const CategoryResponsive = () => {
             </div>
 
             {allCategories
-                .filter(newarr => newarr.idClassificacaoNivelAnterior === 0)
+                .filter(newarr => newarr.idClassificacaoNivelAnterior == 0)
                 .map(category => (
                     <div key={category.idClassificacaoNivel} className="header_nav_cont right sub-menu" id={category.Codigo}>
                         <div className="header_nav_breadcrumb">
@@ -43,7 +43,7 @@ const CategoryResponsive = () => {
                         <nav className="nav">
                             <ul className="list-unstyled mb-0">
                                 {allCategories
-                                    .filter(newarr => newarr.idClassificacaoNivelAnterior === category.idClassificacaoNivel)
+                                    .filter(newarr => newarr.idClassificacaoNivelAnterior == category.idClassificacaoNivel)
                                     .map(subCategory => (
                                         <li key={subCategory.idClassificacaoNivel} className="nav-item">
                                             {createElement('a', { href: `/busca?c=${subCategory.idClassificacaoNivelAnterior}&s=${subCategory.idClassificacaoNivel}`, className: "nav-link" }, subCategory.Descricao)}

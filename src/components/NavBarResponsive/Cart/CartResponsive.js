@@ -14,7 +14,7 @@ const CartResponsive = ({ items, amount }) => {
                                 <li key={`cart-dropdown-resp-item-${index}`} className="cart_list_item">
                                     {createElement('a', { href: `/produto/${item.idProduto}`, className: 'dropdown-menu_link' }, item.Descricao)}
                                     <div className="cart_list_item_footer">
-                                        <p>Cantidad: {item.Quantidade}</p>
+                                        <p>Quantidade: {item.Quantidade}</p>
                                         <p>R$ {formatMoney(item.ValorTotalFinal, 2, ',', '.')}</p>
                                     </div>
                                 </li>
@@ -22,10 +22,10 @@ const CartResponsive = ({ items, amount }) => {
                         </ul>
                     </div>
                     <div className="header_nav_cont_footer">
-                        <p className="mb-0 fs-12">Total parcial:</p>
+                        <p className="mb-0 fs-12">Subtotal:</p>
                         <p className="c-laranja fs-18 mb-0"><b>R$ {formatMoney(amount, 2, ',', '.')}</b></p>
-                        {/* <Link to="/carrinho" className="btn btn--laranja btn--full mt-3">Cerrar orden</Link> */}
-                        {createElement('a', { href: '/carrinho', className: 'btn btn--laranja btn--full mt-3' }, 'Cerrar orden')}
+                        {/* <Link to="/carrinho" className="btn btn--laranja btn--full mt-3">Fechar pedido</Link> */}
+                        {createElement('a', { href: '/carrinho', className: 'btn btn--laranja btn--full mt-3' }, 'Fechar pedido')}
                     </div>
                 </>
             }

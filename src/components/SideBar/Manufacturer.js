@@ -26,7 +26,7 @@ const Manufacturer = () => {
         e.preventDefault();
         
         if (!e.target.checked) {
-            arrFornecedores = arrFornecedores.filter(arr => { return arr !== e.target.value })
+            arrFornecedores = arrFornecedores.filter(arr => { return arr != e.target.value })
         } else {
             arrFornecedores.push(parseInt(e.target.value))
         }

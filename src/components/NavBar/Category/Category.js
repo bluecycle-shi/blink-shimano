@@ -21,7 +21,7 @@ const Category = () => {
 
     return (
         <>
-            <a role="button" href="#" className="nav-link nav-dropdown">Categorias<span className="fas fa-caret-down ml-2"></span></a>
+            <a role="button" href="#" className="nav-link nav-dropdown">Categorias<span className="icon icon-caret-down"></span></a>
             <ul className="list-unstyled mb-0 nav_sub-menu">
                 {allCategories
                     .slice(0, 10)

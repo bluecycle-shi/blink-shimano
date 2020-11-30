@@ -26,7 +26,7 @@ const Search = (props) => {
                         id="search"
                         name="busca"
                         className="form-control"
-                        placeholder="¿Qué producto estás buscando?"
+                        placeholder="Qual produto você está procurando?"
                         value={busca}
                         onChange={handleChange}
                     />

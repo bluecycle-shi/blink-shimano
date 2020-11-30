@@ -9,7 +9,7 @@ export const http = axios.create({
 })
 
 export const isExpired = (ret) => {
-    return (ret.Codigo === 500 && ret.CodigoInterno === 4)
+    return (ret.Codigo == 500 && ret.CodigoInterno == 4)
 }
 
 export const HTTP_TOKEN = getItemSession('_token');

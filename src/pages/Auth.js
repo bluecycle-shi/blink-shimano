@@ -85,7 +85,7 @@ const Auth = (props) => {
         var myCookie = Cookies.get('_register_' + isHomolog);
         let device = myCookie;
 
-        if (!myCookie || device === null || device === '' || device === 0) {
+        if (!myCookie || device == null || device == '' || device == 0) {
             const browser = browserName + ' ' + browserVersion + ' ' + deviceType;
             const so = osName + ' ' + osVersion;
             const serialNumber = uuidv4();

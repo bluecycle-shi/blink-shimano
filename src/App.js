@@ -24,7 +24,6 @@ import Contact from './pages/Contact';
 import Search from './pages/Search';
 import { getItemSession } from './utils';
 
-
 function App() {
   return (
     <BrowserRouter>

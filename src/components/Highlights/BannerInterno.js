@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchBanners } from '../../services/banners-api';
-// import { disconnect } from '../../utils';
+import { disconnect } from '../../utils';
 
 const BannerInterno = (props) => {
     const [banners, setBanners] = useState([]);
@@ -13,10 +13,10 @@ const BannerInterno = (props) => {
             .then(result => {
                 setBanners(result.data.Data.Dados)
             })
-            // .catch(reject => {
-            //     disconnect();
-            // })
-    }, [nameHighlight])
+            .catch(reject => {
+                disconnect();
+            })
+    }, [])
 
     const HaveLink = ({ banner }) => {
         if (banner.LinkRedirecionamento) {

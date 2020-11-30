@@ -140,7 +140,7 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
                 </h5>
                 {product.PossuiPrecoPromocional
                     ?
-                        <>
+                    <>
                             <p className="card-item--valor--de"><strike>R$ {formatMoney(product.PrecoUnitario, 2, ',', '.')}</strike></p>
                             <p className="card-item--valor--por">R$ {formatMoney(product.PrecoPromocionalUnitario, 2, ',', '.')} </p>
                             <p className="card-item--valor-total"><b>Total: de <strike>R$ {formatMoney(product.Preco, 2, ',', '.')}</strike> por R$ {formatMoney(product.PrecoPromocional, 2, ',', '.')}</b></p>
@@ -151,7 +151,8 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
                             <p className="card-item--valor-total"><b>Total R$ {formatMoney(product.Preco, 2, ',', '.')}</b></p>
                         </>
                 }
-                {/* <p className="card-item--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="badge badge-black-white">Producto no disponible</span>}</p> */}
+                {/* <p className="card-item--estoque">{product.Estoque > 0 ? `${product.Estoque} disponíveis` : <span className="badge badge-black-white">Produto indisponível</span>}</p> */}
+                <p className="card-item--estoque">{product.Estoque > 0 ? `` : <span className="no-stock">Producto no disponible</span>}</p>
             </div>
             {product.Estoque > 0 &&
                 <div className="card-item--footer">
@@ -183,7 +184,7 @@ const ProductCard = ({ product, origin, refreshCartFn }) => {
                     >
                         {adding
                             ? <><div className="spinner-border spinner-border-sm text-light"></div> Agregando</>                            
-                            : 'Agregar al carrito'
+                            : 'Adicionar'
                         }
                         
                     </button>

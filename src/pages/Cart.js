@@ -198,12 +198,12 @@ const Cart = ({ cartItems, refreshCartFn }) => {
                                             <td>
                                                 <p>{item.Descricao}</p>
                                                 <p>EAN: {item.EAN}</p>
-                                                {/* <p className="tabela-items--estoque">
+                                                <p className="tabela-items--estoque">
                                                     {item.Estoque < 1
                                                         ? 'produto indisponível'
                                                         : `${item.Estoque} disponíveis`
                                                     }
-                                                </p> */}
+                                                </p>
                                             </td>
                                             <td>
                                                 <form className="form-adicionar">
@@ -224,7 +224,7 @@ const Cart = ({ cartItems, refreshCartFn }) => {
                                                         onChange={handleChange}
                                                         onBlur={(e) => handleBlur(item.idProduto, item.Item, e)}
                                                         // enter: e.which == 13
-                                                        onKeyPress={(e) => e.which === 13 ? handleBlur(item.idProduto, item.Item, e) : ''}
+                                                        onKeyPress={(e) => e.which == 13 ? handleBlur(item.idProduto, item.Item, e) : ''}
                                                     />
                                                     <button
                                                         type="button"
@@ -290,7 +290,7 @@ const Cart = ({ cartItems, refreshCartFn }) => {
                 <Modal.Header>
                     <div className="modal-header_container">
                         <img src="./img/img-modal-indisponivel.png" alt="Imagem representativa de ma folha de papel" />
-                        <h2 className="titulo h2">Producto no disponible</h2>
+                        <h2 className="titulo h2">Produto Indisponível</h2>
                         <p>Desculpe, o(s) produto(s) acabaram nos nossos estoques.</p>
                     </div>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={hideModal}>

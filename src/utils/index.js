@@ -4,13 +4,14 @@ export const disconnect = () => {
     try{
         const get = getItemSession('_dados');
         const dados = JSON.parse(get);    
-                    
+                            
+        
         
         setTimeout(() => {  
             sessionStorage.clear();
             localStorage.clear();
-            // window.location.href = dados.LinkExpiracaoSessao;
-            // alert('Oops! A sessão expirou e você será redirecionado(a). \n \nPor favor, efetue o login novamente');
+            window.location.href = dados.LinkExpiracaoSessao;
+            alert('Oops! A sessão expirou e você será redirecionado(a). \n \nPor favor, efetue o login novamente');
         }, 1000); 
 
     }catch(e){        
@@ -25,12 +26,12 @@ export const verificationBrowser = () => {
     var nav = navigator.userAgent.toLowerCase();
         
         var browser = '';
-        if(nav.indexOf("mozilla") !== -1){
-            if(nav.indexOf("firefox") !== -1){
+        if(nav.indexOf("mozilla") != -1){
+            if(nav.indexOf("firefox") != -1){
                 browser = "firefox";
-            }else if(nav.indexOf("firefox") !== -1){
+            }else if(nav.indexOf("firefox") != -1){
                 browser = "mozilla";
-            }else if(nav.indexOf("chrome") !== -1){
+            }else if(nav.indexOf("chrome") != -1){
                 browser = "chrome";
             }            
         }

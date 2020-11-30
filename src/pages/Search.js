@@ -81,35 +81,35 @@ const Search = () => {
     useEffect(() => scrollToTop(), [isLoading]);
 
     // Load Data
-    // useEffect(() => {
-    //     if (term === '' && fornecedores === '' && categorias === '') {
-    //         window.location.href = '/';
-    //         return null;
-    //     }
+    useEffect(() => {
+        if (term === '' && fornecedores === '' && categorias === '') {
+            window.location.href = '/';
+            return null;
+        }
 
-    //     if (arrFornecedores.length === 1) {
-    //         const listManufacturer = getManufacturerById(arrFornecedores);
-    //         setManufacturer(listManufacturer);
-    //     }
+        if (arrFornecedores.length === 1) {
+            const listManufacturer = getManufacturerById(arrFornecedores);
+            setManufacturer(listManufacturer);
+        }
 
-    //     if (arrCategorias.length === 1) {
-    //         setCategory(listCategory => getCategoryById(arrCategorias));
-    //     }
+        if (arrCategorias.length === 1) {
+            setCategory(listCategory => getCategoryById(arrCategorias));
+        }
 
-    //     if (xArrClearSubCategorias && xArrClearSubCategorias.length === 1 && arrCategorias.length > 0) {
-    //         setSubCategory(listCategory => getCategoryById(xArrClearSubCategorias));
-    //     }
+        if (xArrClearSubCategorias && xArrClearSubCategorias.length === 1 && arrCategorias.length > 0) {
+            setSubCategory(listCategory => getCategoryById(xArrClearSubCategorias));
+        }
 
-    //     fetchProductsSearch(term === '' ? null : term, fornecedores === '' ? null : fornecedores, categorias === '' ? null : arrHierarquia, currentPage, recordPerPage)
-    //         .then(result => {
-    //             setProducts(result.data.Data.Dados)
-    //             setQtd(result.data.Data.QuantidadeRegistrosTotal)
-    //         })
-    //         .then(result => setLoading(false))
-    //         .catch(reject => {
-    //             disconnect();
-    //         })
-    // }, [currentPage])
+        fetchProductsSearch(term === '' ? null : term, fornecedores === '' ? null : fornecedores, categorias === '' ? null : arrHierarquia, currentPage, recordPerPage)
+            .then(result => {
+                setProducts(result.data.Data.Dados)
+                setQtd(result.data.Data.QuantidadeRegistrosTotal)
+            })
+            .then(result => setLoading(false))
+            .catch(reject => {
+                disconnect();
+            })
+    }, [currentPage])
 
     return (
         <>

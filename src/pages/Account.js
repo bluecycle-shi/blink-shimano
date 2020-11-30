@@ -47,7 +47,7 @@ const Account = () => {
                 <div className="minha-conta--wrapper">
                     <div className="sect-header">
                         <div className="sect-titulo">
-                            <h2 className="titulo h2">Mi cuenta</h2>
+                            <h2 className="titulo h2">Minha Conta</h2>
                         </div>
                         <hr />
                     </div>

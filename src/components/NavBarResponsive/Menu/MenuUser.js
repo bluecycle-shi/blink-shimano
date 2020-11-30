@@ -9,7 +9,7 @@ const MenuUser = () => {
                 <nav className="nav">
                     <ul className="list-unstyled mb-0">
                         <li className="nav-item">
-                            {createElement('a', { href: '/minha-conta', className: "nav-link" }, "Mi cuenta")}
+                            {createElement('a', { href: '/minha-conta', className: "nav-link" }, "Minha conta")}
                         </li>
                         <li className="nav-item">
                             {createElement('a', { href: '/pedidos', className: "nav-link" }, "Pedidos")}

@@ -25,7 +25,7 @@ const Category = () => {
         e.preventDefault();
 
         if (!e.target.checked) {
-            arrCategorias = arrCategorias.filter(arr => { return arr !== e.target.value })
+            arrCategorias = arrCategorias.filter(arr => { return arr != e.target.value })
         } else {
             arrCategorias.push(parseInt(e.target.value))
         }
@@ -40,7 +40,7 @@ const Category = () => {
     useEffect(() => {
         const allCategories = getAllCategories(0);
         const groups = allCategories.filter(function (newarr) {
-            return newarr.idClassificacaoNivelAnterior === 0;
+            return newarr.idClassificacaoNivelAnterior == 0;
         });
         setCategorySelected(arrCategorias)
         setCategories(groups);

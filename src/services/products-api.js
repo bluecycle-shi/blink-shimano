@@ -116,8 +116,7 @@ export const fetchProductsByTagHome = (value, total, tokenLogin = null) => {
     var options;
     if(value === 'Promocao'){
         options = {
-            // "Token": tokenLogin ?? HTTP_TOKEN,
-            "Token": HTTP_TOKEN,
+            "Token": tokenLogin ?? HTTP_TOKEN,
             "Esquema": "web",
             "Tabela": "Produto",
             "Parametros": [
@@ -145,8 +144,7 @@ export const fetchProductsByTagHome = (value, total, tokenLogin = null) => {
         }
     }else{
         options = {
-            // "Token": tokenLogin ?? HTTP_TOKEN,
-            "Token": HTTP_TOKEN,
+            "Token": tokenLogin ?? HTTP_TOKEN,
             "Esquema": "web",
             "Tabela": "Produto",
             "Parametros": [
